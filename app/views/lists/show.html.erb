@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @trainer.banner_url %>');">
+  <div class="container">
+    <h1><%= @trainer.name %></h1>
+  </div>
+</div>
+
+<div class="cards mt-3 mx-3">
+  <% @list.bookmarks.each do |bookmark| %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= pokemon.image_url %>'); background-size: cover;">
+      <%= bookmark.name %>
+      <%= link_to "+", pokemon_path(pokemon), method: :delete, class: 'card-remove-link' %>
+    </div>
+  <% end %>
+</div>
+
+
+
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <h4>Add a Pokemon!</h4>
+      <%= simple_form_for [@trainer, @pokemon] do |f| %>
+        <%= f.input :name, placeholder: "What's the name?" %>
+        <%= f.input :image_url, placeholder: "www.google.com/image" %>
+        <%= f.submit 'Add Pokemon', class: 'btn btn-success btn-block w-100' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_trainer_path(@trainer) %> |
+<%= link_to 'Back', trainers_path %>
