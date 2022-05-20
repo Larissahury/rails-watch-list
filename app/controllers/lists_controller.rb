@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:index, :show, :create, :new]
+  before_action :set_list, only: [:show]
   # GET /restaurants
   def index
     @lists = List.all

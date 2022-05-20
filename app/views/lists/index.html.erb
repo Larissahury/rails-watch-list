@@ -1,9 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Lists</h1>
-
-<%= render 'list', list: @list %>
+<% @lists.each do |list| %>
+<p><%= list.name %></p>
+<% end %>
 
 <br>
 
-<%= link_to 'New List', list_new_path %>
+<%= link_to 'New List', new_list_path %>
