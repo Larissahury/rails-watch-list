@@ -1,8 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Lists</h1>
+<h1>List of movie</h1>
 <% @lists.each do |list| %>
-<p><%= list.name %></p>
+  <div class="d-flex">
+    <p class="mx-5"><%= link_to list.name, list_path(list) %></p>
+    <p><%= link_to 'Delete a list', list_path(list), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  </div>
 <% end %>
 
 <br>

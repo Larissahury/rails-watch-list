@@ -1,20 +1,20 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:show]
-  # GET /restaurants
+  before_action :set_list, only: [:show, :destroy]
+  # GET /list
   def index
     @lists = List.all
   end
 
-  # GET /restaurants/1
+  # GET /lists/1
   def show; end
 
-  # GET /restaurants/new
+  # GET /lists/new
   def new
     @lists = List.new
   end
 
-  # GET /restaurants/1/edit
-  # POST /restaurants
+  # GET /lists/1/edit
+  # POST /lists
   def create
     @list = List.new(list_params)
 
@@ -23,6 +23,11 @@ class ListsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @list.destroy
+    redirect_to :root, notice: 'List was successfully deleted.'
   end
 
   private
