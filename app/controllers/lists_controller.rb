@@ -10,7 +10,7 @@ class ListsController < ApplicationController
 
   # GET /lists/new
   def new
-    @lists = List.new
+    @list = List.new
   end
 
   # GET /lists/1/edit
@@ -19,7 +19,7 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
 
     if @list.save
-      redirect_to @list, notice: 'List was successfully created.'
+      redirect_to list_path(@list), notice: 'List was successfully created.'
     else
       render :new
     end
